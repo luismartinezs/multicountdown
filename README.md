@@ -4,8 +4,8 @@ Phase 1:
 - [x] Display single countdown timer
 - [x] Able to increase 1h the timer
 - [x] Relies on localStorage data (no job required in the background if app is not on)
-- [ ] Deploy to netlify
-- [ ] Convert in PWA
+- [x] Deploy to netlify
+- [x] Convert in PWA
 - [ ] Copy icon design from timer app
 
 Phase 2:
