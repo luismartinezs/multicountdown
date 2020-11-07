@@ -1,9 +1,22 @@
 # multicountdown
 
 Phase 1:
-- [ ] Display single countdown timer
-- [ ] Able to increase 1h the timer
-- [ ] Relies on localStorage data (no job required in the background if app is not on)
+- [x] Display single countdown timer
+- [x] Able to increase 1h the timer
+- [x] Relies on localStorage data (no job required in the background if app is not on)
+- [ ] Deploy to netlify
+- [ ] Convert in PWA
+- [ ] Copy icon design from timer app
+
+Phase 2:
+- [ ] Design the app
+- [ ] Able to create new timers: set label and end time
+- [ ] Able to delete existing timers
+- [ ] Able to edit existing timers (edit label and end time)
+- [ ] Able to add +5 hours
+- [ ] Able to add +1 minute
+- [ ] Able to reset timer to whatever initial value it had
+- [ ] Add GA and cookies modal
 
 ## Project setup
 ```

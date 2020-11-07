@@ -1,0 +1,14 @@
+{
+  "timers": [
+    {
+      "label": "One week timer",
+      "startCountdown": 987654321,
+      "endTime": 123456789
+    },
+    {
+      "label": "One day timer",
+      "startCountdown": 87654321,
+      "endTime": 23456789
+    }
+  ]
+}
