@@ -4,13 +4,13 @@
       "id": 0,
       "label": "One week timer",
       "startCountdown": 1604628557717,
-      "endTime": 1605233357717
+      "endTime": 1605253357717
     },
     {
       "id": 1,
       "label": "One day timer",
       "startCountdown": 1605146957717,
-      "endTime": 1605233357717
+      "endTime": 1605433357717
     },
     {
       "id": 2,

@@ -1,17 +1,55 @@
 <template>
   <div class="home">
-    <TimerCards />
+    <TimerCards :key="key" />
+    <div class="flex justify-center mt-2">
+    <button
+      @click="addTimer"
+      class="btn btn-dark rounded-full h-16 w-16 p-0 my-0 mx-1"
+    >
+      <span class="text-4xl font-bold">+</span>
+    </button>
+    <button @click="deleteTimer" class="btn btn-dark rounded-full h-16 w-16 p-0 my-0 mx-1">
+      <span class="text-4xl font-bold">-</span>
+    </button>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import TimerCards from '@/components/TimerCards.vue'
+import HandleLocalStorage from '@/helpers/handleLocalStorage.js'
+// import duration from '@/helpers/duration.js'
+
+const { addTimer, deleteLastTimer } = HandleLocalStorage()
+// const { week } = duration
 
 export default {
   name: 'Home',
+  data () {
+    return {
+      key: 0
+    }
+  },
   components: {
     TimerCards
+  },
+  methods: {
+    addTimer () {
+      this.addOneWeekTimer()
+    },
+    addOneWeekTimer () {
+      addTimer({
+        label: 'One week timer',
+        endTime: 1605393439198,
+        startCountdown: Date.now()
+      })
+      this.key++
+    },
+    deleteTimer () {
+      deleteLastTimer()
+      this.key++
+    }
   }
 }
 </script>

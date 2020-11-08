@@ -15,12 +15,12 @@
     @apply bg-primary-700;
   }
 
-  .btn-secondary {
-    @apply border border-white;
+  .btn-dark {
+    @apply bg-gray-900 text-gray-600;
   }
 
-  .btn-secondary:hover {
-    @apply bg-gray-800 text-white;
+  .btn-dark:hover {
+    @apply bg-gray-500 text-gray-800;
   }
 
   /* After hover effects, because a disabled button should not have a hover effect */

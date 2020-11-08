@@ -9,7 +9,7 @@ Phase 1:
 - [ ] Copy icon design from timer app
 
 Phase 2:
-- [ ] Design the app
+- [x] Design the app
 - [ ] Able to create new timers: set label and end time
 - [ ] Able to delete existing timers
 - [ ] Able to edit existing timers (edit label and end time)

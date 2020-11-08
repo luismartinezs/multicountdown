@@ -24,15 +24,22 @@
 </template>
 
 <script>
+import HandleLocalStorage from '@/helpers/handleLocalStorage.js'
+
+const { setTimerData } = HandleLocalStorage()
+
 export default {
-  name: 'CountdownTimer',
-  props: ['timer'],
+  name: 'TimerCard',
+  props: ['timer', 'index'],
   data () {
     return {
-      endTime: 0,
-      time: 0,
-      ONE_WEEK: 7 * 24 * 60 * 60 * 1000,
-      ONE_HOUR: 60 * 60 * 1000
+      time: null,
+      id: null, // unique value
+      label: null, // text on display
+      startCountdown: null, // n of ms that timer initially lasted
+      endTime: null, // timestamp where timer will reach 0
+      ONE_WEEK: 604800000,
+      ONE_HOUR: 3600000
     }
   },
   filters: {
@@ -50,18 +57,19 @@ export default {
       this.time = this.endTime - Date.now()
     },
     setEndTime () {
-      window.localStorage.setItem('cdt_end_time', this.endTime)
-    },
-    resetToMs (ms) {
-      this.endTime = Date.now() + ms
-      this.setEndTime()
-      this.handleTime()
+      const options = {
+        timerData: {
+          ...this.timer,
+          endTime: this.endTime
+        },
+        index: this.index
+      }
+      setTimerData(options)
     }
   },
   mounted () {
-    const savedEndTime = +window.localStorage.getItem('cdt_end_time')
-    if (savedEndTime) {
-      this.endTime = savedEndTime
+    if (this.timer.endTime) {
+      this.endTime = this.timer.endTime
     } else {
       this.endTime = Date.now() + this.ONE_WEEK
       this.setEndTime()
