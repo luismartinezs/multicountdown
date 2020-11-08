@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <CountdownTimer />
+    <TimerCards />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import CountdownTimer from '@/components/CountdownTimer.vue'
+import TimerCards from '@/components/TimerCards.vue'
 
 export default {
   name: 'Home',
   components: {
-    CountdownTimer
+    TimerCards
   }
 }
 </script>

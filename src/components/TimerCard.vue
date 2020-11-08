@@ -1,10 +1,10 @@
 <template>
-  <div class="leading-tight text-xl">
-    <div class="my-auto flex flex-col text-center">
-      <h1>One week timer</h1>
-      <countdown :time="time">
+  <div class="leading-tight bg-gray-900 p-4 rounded-xl">
+    <div class="flex flex-col text-center">
+      <h2 class="text-gray-600 text-lg">{{ timer.label }}</h2>
+      <countdown :time="time" class="mt-1">
         <template slot-scope="props"
-          ><span class="text-8xl"
+          ><span class="text-primary-400 text-3xl"
             >{{ props.totalHours }}:{{ props.minutes | timeFormat }}:{{
               props.seconds | timeFormat
             }}</span
@@ -12,13 +12,12 @@
         >
       </countdown>
     </div>
-    <div class="flex flex-col">
-      <button @click="addHours(1)" class="btn btn-primary py-6">+1 hour</button>
+    <div class="flex justify-center mt-1">
       <button
-        @click="resetToMs(ONE_WEEK)"
-        class="btn btn-secondary py-6"
+        @click="addHours(1)"
+        class="text-2xl font-semibold hover:text-primary-200"
       >
-        Reset to one week
+        +1h
       </button>
     </div>
   </div>
@@ -27,6 +26,7 @@
 <script>
 export default {
   name: 'CountdownTimer',
+  props: ['timer'],
   data () {
     return {
       endTime: 0,

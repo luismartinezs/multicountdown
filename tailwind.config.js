@@ -28,7 +28,8 @@ module.exports = {
           700: 'var(--gray-700)',
           800: 'var(--gray-800)',
           900: 'var(--gray-900)'
-        }
+        },
+        black: '#131720'
       },
       fontSize: {
         '8xl': '6rem',
@@ -37,6 +38,8 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    margin: ['responsive', 'first']
+  },
   plugins: []
 }

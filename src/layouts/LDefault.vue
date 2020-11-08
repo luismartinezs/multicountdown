@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto w-full w-screen lg:max-w-md bg-gray-100 shadow-lg">
+  <div class="mx-auto h-full w-screen lg:max-w-md bg-gray-800 shadow-lg py-3">
     <slot></slot>
   </div>
 </template>

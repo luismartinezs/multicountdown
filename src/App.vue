@@ -1,8 +1,10 @@
 <template>
   <div
     id="app"
-    class="text-gray-100 bg-white h-screen flex flex-col justify-between"
+    class="text-gray-100 bg-black min-h-screen flex flex-col"
   >
+    <TheHeader class="z-50" />
+    <TheDrawerMenu class="z-40" />
     <LDefault>
       <router-view />
     </LDefault>
@@ -11,10 +13,12 @@
 
 <script>
 import LDefault from '@/layouts/LDefault.vue'
+import TheHeader from '@/components/TheHeader.vue'
+import TheDrawerMenu from '@/components/TheDrawerMenu.vue'
 
 export default {
   name: 'App',
-  components: { LDefault }
+  components: { LDefault, TheHeader, TheDrawerMenu }
 }
 </script>
 
