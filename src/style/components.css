@@ -1,6 +1,6 @@
 @layer components {
   .btn {
-    @apply inline-block px-4 py-2 uppercase tracking-wider cursor-pointer text-center;
+    @apply inline-block px-4 py-2 tracking-wider cursor-pointer text-center rounded;
   }
 
   .btn:focus {
@@ -16,15 +16,39 @@
   }
 
   .btn-dark {
-    @apply bg-gray-900 text-gray-600;
+    @apply bg-gray-800 text-gray-600;
   }
 
   .btn-dark:hover {
+    @apply bg-gray-600 text-gray-800 border border-gray-800 border-2;
+  }
+
+  .btn-dark-outline {
+    @apply bg-gray-600 text-gray-800 border border-gray-800 border-2;
+  }
+
+  .btn-dark-outline:hover {
+    @apply bg-gray-800 text-gray-600;
+  }
+
+  .btn-darker {
+    @apply bg-gray-900 text-gray-600;
+  }
+
+  .btn-darker:hover {
     @apply bg-gray-500 text-gray-800;
   }
 
   /* After hover effects, because a disabled button should not have a hover effect */
   .btn:disabled {
     @apply opacity-50 cursor-default bg-transparent;
+  }
+
+  .input {
+    @apply inline-block px-4 py-2 tracking-wider shadow-inner bg-gray-700 text-gray-400 rounded text-lg;
+  }
+
+  .input:focus {
+    @apply outline-none shadow-outline;
   }
 }

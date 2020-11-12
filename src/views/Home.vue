@@ -1,16 +1,20 @@
 <template>
   <div class="home">
+    <EditTimerModal v-if="false"/>
     <TimerCards :key="key" />
     <div class="flex justify-center mt-2">
-    <button
-      @click="addTimer"
-      class="btn btn-dark rounded-full h-16 w-16 p-0 my-0 mx-1"
-    >
-      <span class="text-4xl font-bold">+</span>
-    </button>
-    <button @click="deleteTimer" class="btn btn-dark rounded-full h-16 w-16 p-0 my-0 mx-1">
-      <span class="text-4xl font-bold">-</span>
-    </button>
+      <button
+        @click="addTimer"
+        class="btn btn-darker rounded-full h-16 w-16 p-0 my-0 mx-1"
+      >
+        <span class="text-4xl font-bold">+</span>
+      </button>
+      <button
+        @click="deleteTimer"
+        class="btn btn-darker rounded-full h-16 w-16 p-0 my-0 mx-1"
+      >
+        <span class="text-4xl font-bold">-</span>
+      </button>
     </div>
   </div>
 </template>
@@ -18,6 +22,7 @@
 <script>
 // @ is an alias to /src
 import TimerCards from '@/components/TimerCards.vue'
+import EditTimerModal from '@/components/EditTimerModal.vue'
 import HandleLocalStorage from '@/helpers/handleLocalStorage.js'
 // import duration from '@/helpers/duration.js'
 
@@ -32,7 +37,8 @@ export default {
     }
   },
   components: {
-    TimerCards
+    TimerCards,
+    EditTimerModal
   },
   methods: {
     addTimer () {

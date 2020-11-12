@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data" class="text-gray-100 flex flex-wrap justify-center mx-2">
+  <div v-if="data" class="text-gray-100 flex flex-wrap justify-center">
     <TimerCard
       v-for="(timer, index) in data.timers"
       :key="timer.id"

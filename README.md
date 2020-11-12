@@ -10,7 +10,7 @@ Phase 1:
 
 Phase 2:
 - [x] Design the app
-- [ ] Able to create new timers: set label and end time
+- [ ] Able to create new timers: set label and end time (the UI asks for duration)
 - [ ] Able to delete existing timers
 - [ ] Able to edit existing timers (edit label and end time)
 - [ ] Able to add +5 hours
