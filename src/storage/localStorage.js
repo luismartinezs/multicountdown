@@ -1,46 +1,41 @@
 // imports
-import data from '@/mock/data.json'
 
 // constants
-const defaultTimer = {
-  label: 'One week timer',
-  startCountdown: 1604628557717,
-  endTime: 1605253357717
-}
 
-export default function Mock () {
+export default function LocalStorageHandler () {
   // private vars (internal state)
-  let { timers } = data || []
+  const key = 'manytimer_data'
+  let timers = []
 
-  // getters
   function getTimers () {
+    _fetchTimers()
     return timers
   }
 
   function getTimer (id) {
+    _fetchTimers()
     return timers.find(timer => timer.id === id) || null
   }
 
-  // setters
   function createTimer (options = {}) {
     _validateOptions(options)
 
-    const timer = { ...defaultTimer, ...options, id: _generateId() }
+    const timer = { ...options, id: _generateId() }
     timers.push(timer)
+    _saveTimers()
     return timer
   }
 
   function updateTimer (id, options) {
     _validateOptions(options)
-
-    // get timer index
     const index = _getIndexById(id)
 
     if (!index) {
       throw new Error(`function updateTimer: timer with id ${id} not found`)
     }
-    // directly edit the timer object inside timers
+
     timers[index] = { ...timers[index], ...options }
+    _saveTimers()
     return timers[index]
   }
 
@@ -55,6 +50,7 @@ export default function Mock () {
     // slice out that one
     const deletedTimer = timers[index]
     timers = _deleteTimerByIndex(index)
+    _saveTimers()
     // return the deleted timer
     return deletedTimer
   }
@@ -65,6 +61,7 @@ export default function Mock () {
   }
 
   function _getLargestId () {
+    _fetchTimers()
     return timers.reduce((largestId, timer) => {
       if (timer.id > largestId) {
         largestId = timer.id
@@ -73,8 +70,24 @@ export default function Mock () {
     }, 0)
   }
 
+  function _fetchTimers () {
+    let data = localStorage.getItem(key)
+    if (!data) {
+      _saveTimers()
+      data = localStorage.getItem(key)
+    }
+    timers = data.timers
+    return timers
+  }
+
+  function _saveTimers () {
+    const data = { timers }
+    localStorage.setItem(key, JSON.stringify(data))
+  }
+
   function _getIndexById (id) {
     let timerIndex
+    _fetchTimers()
     timers.forEach((timer, index) => {
       if (timer.id === id) {
         timerIndex = index
@@ -88,9 +101,11 @@ export default function Mock () {
   }
 
   function _validateOptions (options) {
+    const validKeys = ['label', 'startCountdown', 'endTime']
+
     if (options) {
-      const invalidKey = Object.keys(options).find(
-        key => !Object.keys(defaultTimer).includes(key)
+      const invalidKey = Object.keys(options).find(key =>
+        validKeys.includes(key)
       )
 
       if (invalidKey) {

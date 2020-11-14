@@ -1,11 +1,12 @@
 // Storage-agnostic adapter. Created because I may use indexedDB or some other data storage solution eventually
 // imports
-import Mock from './mock.js'
+// import Mock from './mock.js'
+import LocalStorageHandler from './localStorage.js'
 
 // constants
-const mock = Mock()
+// const mock = Mock()
 
-const store = mock
+const store = LocalStorageHandler()
 
 export default function handleStorage () {
   // private vars (internal state)
