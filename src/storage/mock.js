@@ -11,7 +11,7 @@ const defaultTimer = {
 
 export default function Mock () {
   // private vars (internal state)
-  let timers = data.timers || []
+  let { timers } = data || []
 
   // getters
   function getTimers () {
@@ -75,11 +75,13 @@ export default function Mock () {
   }
 
   function _getIndexById (id) {
-    return timers.find((timer, index) => {
+    let timerIndex
+    timers.forEach((timer, index) => {
       if (timer.id === id) {
-        return index
+        timerIndex = index
       }
     })
+    return timerIndex
   }
 
   function _deleteTimerByIndex (index) {

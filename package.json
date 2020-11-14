@@ -5,8 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "c": "rm -rf node_modules package-lock.json"
+    "c": "rm -rf node_modules package-lock.json",
+    "test:unit": "jest"
   },
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^1.1.5",
@@ -23,9 +25,11 @@
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-pwa": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "^4.5.8",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/test-utils": "^1.0.3",
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
