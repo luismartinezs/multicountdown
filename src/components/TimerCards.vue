@@ -1,7 +1,7 @@
 <template>
-  <div v-if="data" class="text-gray-100 flex flex-wrap justify-center">
+  <div v-if="timers && timers.length" class="text-gray-100 flex flex-wrap justify-center">
     <TimerCard
-      v-for="(timer, index) in data.timers"
+      v-for="(timer, index) in timers"
       :key="timer.id"
       :timer="timer"
       :index="index"
@@ -13,9 +13,9 @@
 <script>
 import TimerCard from '@/components/TimerCard.vue'
 // import data from '@/mock/data.json'
-import HandleLocalStorage from '@/helpers/handleLocalStorage.js'
+import handleStorage from '@/storage/storage.js'
 
-const { getData } = HandleLocalStorage()
+const { getTimers } = handleStorage()
 
 export default {
   name: 'TimerCards',
@@ -24,11 +24,11 @@ export default {
   },
   data () {
     return {
-      data: null
+      timers: null
     }
   },
   mounted () {
-    this.data = getData()
+    this.timers = getTimers()
   }
 }
 </script>

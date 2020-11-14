@@ -33,6 +33,12 @@ export default function handleStorage () {
     return store.deleteTimer(id)
   }
 
+  function deleteLastTimer () {
+    const timers = store.getTimers()
+    const lastTimerId = timers.slice(-1)[0].id
+    return deleteTimer(lastTimerId)
+  }
+
   // functions
 
   return {
@@ -40,6 +46,7 @@ export default function handleStorage () {
     getTimer,
     createTimer,
     updateTimer,
-    deleteTimer
+    deleteTimer,
+    deleteLastTimer
   }
 }

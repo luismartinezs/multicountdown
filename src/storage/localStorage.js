@@ -17,24 +17,26 @@ export default function LocalStorageHandler () {
     return timers.find(timer => timer.id === id) || null
   }
 
-  function createTimer (options = {}) {
-    _validateOptions(options)
+  function createTimer (options) {
+    const parsedOptions = _parseOptions(options)
+    _validateOptions(parsedOptions)
 
-    const timer = { ...options, id: _generateId() }
+    const timer = { ...parsedOptions, id: _generateId() }
     timers.push(timer)
     _saveTimers()
     return timer
   }
 
   function updateTimer (id, options) {
-    _validateOptions(options)
+    const parsedOptions = _parseOptions(options)
+    _validateOptions(parsedOptions)
     const index = _getIndexById(id)
 
     if (!index) {
       throw new Error(`function updateTimer: timer with id ${id} not found`)
     }
 
-    timers[index] = { ...timers[index], ...options }
+    timers[index] = { ...timers[index], ...parsedOptions }
     _saveTimers()
     return timers[index]
   }
@@ -44,7 +46,7 @@ export default function LocalStorageHandler () {
     // get the index of that timer
     const index = _getIndexById(id)
 
-    if (!index) {
+    if (typeof index === 'undefined') {
       throw new Error(`function deleteTimer: timer with id ${id} not found`)
     }
     // slice out that one
@@ -74,7 +76,9 @@ export default function LocalStorageHandler () {
     let data = localStorage.getItem(key)
     if (!data) {
       _saveTimers()
-      data = localStorage.getItem(key)
+      data = JSON.parse(localStorage.getItem(key))
+    } else {
+      data = JSON.parse(data)
     }
     timers = data.timers
     return timers
@@ -104,14 +108,21 @@ export default function LocalStorageHandler () {
     const validKeys = ['label', 'startCountdown', 'endTime']
 
     if (options) {
-      const invalidKey = Object.keys(options).find(key =>
-        validKeys.includes(key)
+      const invalidKey = Object.keys(options).find(
+        key => !validKeys.includes(key)
       )
 
       if (invalidKey) {
-        throw new Error(`function createTimer: invalid property ${invalidKey}`)
+        throw new Error(`Invalid property ${invalidKey}`)
       }
     }
+  }
+
+  // Make sure options don't have 'id'
+  function _parseOptions (options) {
+    const parsedOptions = { ...options }
+    delete parsedOptions.id
+    return parsedOptions
   }
 
   return {

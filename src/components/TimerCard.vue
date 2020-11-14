@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import HandleLocalStorage from '@/helpers/handleLocalStorage.js'
+import handleStorage from '@/storage/storage.js'
 
-const { setTimerData } = HandleLocalStorage()
+const { updateTimer } = handleStorage()
 
 export default {
   name: 'TimerCard',
@@ -58,13 +58,10 @@ export default {
     },
     setEndTime () {
       const options = {
-        timerData: {
-          ...this.timer,
-          endTime: this.endTime
-        },
-        index: this.index
+        ...this.timer,
+        endTime: this.endTime
       }
-      setTimerData(options)
+      updateTimer(this.timer.id, options)
     }
   },
   mounted () {

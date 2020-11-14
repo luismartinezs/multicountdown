@@ -23,10 +23,11 @@
 // @ is an alias to /src
 import TimerCards from '@/components/TimerCards.vue'
 import EditTimerModal from '@/components/EditTimerModal.vue'
-import HandleLocalStorage from '@/helpers/handleLocalStorage.js'
+// import HandleLocalStorage from '@/helpers/handleLocalStorage.js'
+import handleStorage from '@/storage/storage.js'
 // import duration from '@/helpers/duration.js'
 
-const { addTimer, deleteLastTimer } = HandleLocalStorage()
+const { createTimer, deleteLastTimer } = handleStorage()
 // const { week } = duration
 
 export default {
@@ -45,7 +46,7 @@ export default {
       this.addOneWeekTimer()
     },
     addOneWeekTimer () {
-      addTimer({
+      createTimer({
         label: 'One week timer',
         endTime: 1605393439198,
         startCountdown: Date.now()
