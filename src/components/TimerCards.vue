@@ -1,6 +1,10 @@
 <template>
-  <div v-if="timers && timers.length" class="text-gray-100 flex flex-wrap justify-center">
+  <div
+    v-if="timers && timers.length"
+    class="text-gray-100 flex flex-wrap justify-center"
+  >
     <TimerCard
+      @delete-timer="$emit('delete-timer')"
       v-for="(timer, index) in timers"
       :key="timer.id"
       :timer="timer"

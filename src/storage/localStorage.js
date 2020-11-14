@@ -32,7 +32,7 @@ export default function LocalStorageHandler () {
     _validateOptions(parsedOptions)
     const index = _getIndexById(id)
 
-    if (!index) {
+    if (typeof index === 'undefined') {
       throw new Error(`function updateTimer: timer with id ${id} not found`)
     }
 

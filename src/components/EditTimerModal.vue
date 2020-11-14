@@ -42,10 +42,7 @@
             Edit timer
           </h3>
         </div>
-        <form
-          class="pt-4 pb-4 flex flex-col"
-          @submit.prevent="editTimer"
-        >
+        <form class="pt-4 pb-4 flex flex-col" @submit.prevent="editTimer">
           <label for="label" class="block text-gray-300">
             <input
               id="label"
@@ -53,6 +50,7 @@
               maxlength="20"
               placeholder="Enter a name"
               class="input"
+              v-model="label"
             />
           </label>
           <label for="days" class="mt-4 block">
@@ -62,7 +60,7 @@
               type="number"
               max="999"
               min="0"
-              value="0"
+              v-model="days"
             />
             <span class="text-gray-800 inline-block ml-3 text-lg">days</span>
           </label>
@@ -73,7 +71,7 @@
               type="number"
               max="999"
               min="0"
-              value="0"
+              v-model="hours"
             />
             <span class="text-gray-800 inline-block ml-3 text-lg">hours</span>
           </label>
@@ -84,16 +82,21 @@
               type="number"
               max="59"
               min="0"
-              value="0"
+              v-model="minutes"
             />
             <span class="text-gray-800 inline-block ml-3 text-lg">minutes</span>
           </label>
         </form>
         <div class="flex justify-end">
-          <button type="button" class="btn btn-dark-outline font-semibold">
+          <button
+            @click.prevent="onCancel"
+            type="button"
+            class="btn btn-dark-outline font-semibold"
+          >
             Cancel
           </button>
           <button
+          @click.prevent="onSave"
             type="button"
             class="btn btn-dark border border-gray-800 border-2 ml-2 font-bold px-6"
           >
@@ -106,7 +109,41 @@
 </template>
 
 <script>
+import handleStorage from '@/storage/storage.js'
+import duration from '@/helpers/duration.js'
+
+const { day, hour, minute } = duration
+
+const { createTimer } = handleStorage()
+
 export default {
-  name: 'EditTimerModal'
+  name: 'EditTimerModal',
+  data () {
+    return {
+      label: '',
+      days: 0,
+      hours: 0,
+      minutes: 0
+    }
+  },
+  computed: {
+    endTime () {
+      return this.days * day + this.hours * hour + this.minutes * minute + Date.now()
+    }
+  },
+  methods: {
+    onCancel () {
+      this.$emit('close-modal')
+    },
+    onSave () {
+      createTimer({
+        label: this.label,
+        endTime: this.endTime,
+        startCountdown: this.endTime - Date.now()
+      })
+      this.key++
+      this.$emit('close-modal')
+    }
+  }
 }
 </script>

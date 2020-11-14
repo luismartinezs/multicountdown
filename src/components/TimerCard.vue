@@ -1,21 +1,42 @@
 <template>
-  <div class="leading-tight bg-gray-900 p-4 rounded-xl">
+  <div
+    class="flex flex-col justify-around items-center leading-tight bg-gray-900 p-4 rounded-xl"
+  >
     <div class="flex flex-col text-center">
-      <h2 class="text-gray-600 text-lg">{{ timer.label }}</h2>
-      <countdown :time="time" class="mt-1">
-        <template slot-scope="props"
-          ><span class="text-primary-400 text-3xl"
-            >{{ props.totalHours }}:{{ props.minutes | timeFormat }}:{{
-              props.seconds | timeFormat
-            }}</span
-          ></template
+      <div class="flex justify-between">
+        <button
+          @click="deleteTimer"
+          class="text-base font-semibold hover:text-primary-200"
         >
-      </countdown>
+          <TrashIcon
+            class="stroke-current text-gray-600 hover:text-primary-200 w-5 h-5"
+          />
+        </button>
+        <h2 class="text-gray-600 text-lg whitespace-normal w-24 mx-2">
+          {{ timer.label }}
+        </h2>
+        <div class="w-5 h-5"></div>
+      </div>
     </div>
-    <div class="flex justify-center mt-1">
+    <countdown :time="time" class="mt-2">
+      <template slot-scope="props"
+        ><span class="text-primary-400 text-3xl"
+          >{{ props.totalHours }}:{{ props.minutes | timeFormat }}:{{
+            props.seconds | timeFormat
+          }}</span
+        ></template
+      >
+    </countdown>
+    <div class="flex justify-around mt-2 text-gray-600 w-full">
+      <button
+        @click="resetTimer"
+        class="text-base font-semibold hover:text-primary-200"
+      >
+        <RefreshIcon class="stroke-current hover:text-primary-200 w-5 h-5" />
+      </button>
       <button
         @click="addHours(1)"
-        class="text-2xl font-semibold hover:text-primary-200"
+        class="ml-3 text-2xl font-semibold hover:text-primary-200"
       >
         +1h
       </button>
@@ -25,12 +46,18 @@
 
 <script>
 import handleStorage from '@/storage/storage.js'
+import TrashIcon from '@/components/TrashIcon.vue'
+import RefreshIcon from '@/components/RefreshIcon.vue'
 
-const { updateTimer } = handleStorage()
+const { updateTimer, deleteTimer } = handleStorage()
 
 export default {
   name: 'TimerCard',
   props: ['timer', 'index'],
+  components: {
+    TrashIcon,
+    RefreshIcon
+  },
   data () {
     return {
       time: null,
@@ -62,6 +89,15 @@ export default {
         endTime: this.endTime
       }
       updateTimer(this.timer.id, options)
+    },
+    resetTimer () {
+      this.endTime = Date.now() + this.timer.startCountdown
+      this.setEndTime()
+      this.handleTime()
+    },
+    deleteTimer () {
+      deleteTimer(this.timer.id)
+      this.$emit('delete-timer')
     }
   },
   mounted () {
