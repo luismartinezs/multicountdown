@@ -1,0 +1,100 @@
+{
+  // ===
+  // Spacing
+  // ===
+
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // ===
+  // Event Triggers
+  // ===
+
+  // This setup explicitly uses prettier extension for html files, and disables auto format on saving in general. Then, explicitly enables auto format on save while using prettier-standard extension for .js files.
+
+  // What formats what
+  // Prettier extension: html, scss and css files. Template and style tags in .vue files. Formatted with alt+shift+F (ctrl+shift+I on Ubuntu)
+  // Prettier-StandardJS extension: js files (with alt+shift+F, ctrl+shift+I on Ubuntu). Script tags in .vue files (on save)
+
+  "editor.formatOnType": false,
+  "editor.formatOnSave": false,
+
+  // Sets prettier as default formatter for any file, overwriting later as needed
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Disables VSC JavaScript syntax validation
+  "javascript.validate.enable": false,
+
+  "eslint.validate": [
+    "vue",
+    "javascript",
+    "javascriptreact",
+    "vue-html",
+    "html"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  // ===
+  // Vetur config
+  // https://vuejs.github.io/vetur/setup.html#vs-code-config
+  // ===
+
+  // Disables the default template validation of Vetur, used when a specific eslint configuration is required for .vue templates.
+  "vetur.validation.template": false,
+
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.scss": "prettier",
+
+  // Prevents formatting the script block of .vue files when using the shortcut to autoFormat. Ideally, the default formatter would be set to prettier-standard, but the option is not supported by Vetur as of now.
+  "vetur.format.defaultFormatter.js": "none",
+  "vetur.format.defaultFormatter.ts": "none",
+
+  // ===
+  // Config by language
+  // ===
+
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    // Format .js files AND scripts in .vue files on save
+    // Format .js files (but NOT scripts in .vue files) with autoformat shortcut
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "numso.prettier-standard-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "mtxr.sqltools"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80
+  }
+}
