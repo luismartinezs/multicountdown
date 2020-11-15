@@ -15,6 +15,14 @@
     @apply bg-primary-700;
   }
 
+  .btn-secondary {
+    @apply border border-primary-200 text-primary-200;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-gray-800;
+  }
+
   .btn-dark {
     @apply bg-gray-800 text-gray-600;
   }
