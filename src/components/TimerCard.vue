@@ -60,7 +60,7 @@ export default {
   },
   data () {
     return {
-      time: null,
+      time: 0,
       id: null, // unique value
       label: null, // text on display
       startCountdown: null, // n of ms that timer initially lasted
@@ -81,7 +81,7 @@ export default {
       this.handleTime()
     },
     handleTime () {
-      this.time = this.endTime - Date.now()
+      this.time = Math.max(this.endTime - Date.now(), 0)
     },
     setEndTime () {
       const options = {

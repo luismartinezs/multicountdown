@@ -96,7 +96,7 @@
             Cancel
           </button>
           <button
-          @click.prevent="onSave"
+            @click.prevent="onSave"
             type="button"
             class="btn btn-dark border border-gray-800 border-2 ml-2 font-bold px-6"
           >
@@ -128,11 +128,14 @@ export default {
   },
   computed: {
     endTime () {
-      return this.days * day + this.hours * hour + this.minutes * minute + Date.now()
+      return (
+        this.days * day + this.hours * hour + this.minutes * minute + Date.now()
+      )
     }
   },
   methods: {
     onCancel () {
+      this.clearValues()
       this.$emit('close-modal')
     },
     onSave () {
@@ -141,8 +144,14 @@ export default {
         endTime: this.endTime,
         startCountdown: this.endTime - Date.now()
       })
-      this.key++
+      this.clearValues()
       this.$emit('close-modal')
+    },
+    clearValues () {
+      this.label = ''
+      this.days = 0
+      this.hours = 0
+      this.minutes = 0
     }
   }
 }

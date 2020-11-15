@@ -1,7 +1,7 @@
 <template>
   <div
     id="app"
-    class="text-gray-100 bg-black min-h-screen flex flex-col"
+    class="text-gray-100 bg-gray-800 min-h-screen flex flex-col"
   >
     <TheHeader class="z-50" />
     <TheDrawerMenu class="z-40" />
