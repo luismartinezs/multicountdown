@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home w-full">
     <EditTimerModal
       v-show="showEditTimerModal"
       @close-modal="onCloseModal"

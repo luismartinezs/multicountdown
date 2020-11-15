@@ -16,7 +16,7 @@ Phase 2:
 - [ ] Able to add +5 hours
 - [ ] Able to add +1 minute
 - [x] Able to reset timer to whatever initial value it had
-- [ ] Add GA and cookies modal
+- [x] Add GA and cookies modal
 
 ## Project setup
 ```

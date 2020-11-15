@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="timers && timers.length"
-    class="text-gray-100 flex flex-wrap justify-center"
+    class="text-gray-100 flex flex-wrap justify-center items-center"
   >
     <TimerCard
       @delete-timer="$emit('delete-timer')"
