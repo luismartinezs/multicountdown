@@ -10,12 +10,12 @@ Phase 1:
 
 Phase 2:
 - [x] Design the app
-- [ ] Able to create new timers: set label and end time (the UI asks for duration)
-- [ ] Able to delete existing timers
+- [x] Able to create new timers: set label and end time (the UI asks for duration)
+- [x] Able to delete existing timers
 - [ ] Able to edit existing timers (edit label and end time)
 - [ ] Able to add +5 hours
 - [ ] Able to add +1 minute
-- [ ] Able to reset timer to whatever initial value it had
+- [x] Able to reset timer to whatever initial value it had
 - [ ] Add GA and cookies modal
 
 ## Project setup
