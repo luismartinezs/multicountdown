@@ -1,9 +1,8 @@
 module.exports = {
-  future: {
-    // removeDeprecatedGapUtilities: true,
-    // purgeLayersByDefault: true,
-  },
-  purge: [],
+  content: [
+    './public/**/*.html',
+    './src/**/*.{js,jsx,ts,tsx,vue}',
+  ],
   theme: {
     extend: {
       colors: {
@@ -37,9 +36,6 @@ module.exports = {
         huge: '10rem'
       }
     }
-  },
-  variants: {
-    margin: ['responsive', 'first']
   },
   plugins: []
 }
