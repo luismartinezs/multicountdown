@@ -1,6 +1,6 @@
 <template>
   <header
-    class="flex justify-between w-full bg-primary-500 text-primary-100 py-3 px-4"
+    class="flex justify-between bg-primary-500 text-primary-100 py-3 px-4"
   >
     <div>
       <h1 class="text-sm uppercase font-semibold tracking-wider">

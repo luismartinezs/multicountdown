@@ -142,7 +142,8 @@ export default {
       createTimer({
         label: this.label,
         endTime: this.endTime,
-        startCountdown: this.endTime - Date.now()
+        startCountdown: this.endTime - Date.now(), // this is the duration
+        isRunning: false
       })
       this.clearValues()
       this.$emit('close-modal')

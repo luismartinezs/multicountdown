@@ -105,7 +105,7 @@ export default function LocalStorageHandler () {
   }
 
   function _validateOptions (options) {
-    const validKeys = ['label', 'startCountdown', 'endTime']
+    const validKeys = ['label', 'startCountdown', 'endTime', 'isRunning']
 
     if (options) {
       const invalidKey = Object.keys(options).find(
