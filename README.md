@@ -9,6 +9,9 @@ Phase 1:
 - [ ] Copy icon design from timer app
 
 Phase 2:
+- [ ] When timer is created, it does not autostart
+- [ ] Able to stop (reset) timer
+- [ ] Able to toggle (play / pause) timer
 - [x] Design the app
 - [x] Able to create new timers: set label and end time (the UI asks for duration)
 - [x] Able to delete existing timers

@@ -17,7 +17,7 @@
       long countdowns. This app allows up to 999 hours countdown.
     </p>
     <div class="text-right text-base mt-4">
-      <a href="https://www.luis-martinez.net/" class="underline" target="_blank"
+      <a href="https://www.webdevluis.com/" class="underline" target="_blank"
         >Luis Martinez 2020</a
       >
     </div>
